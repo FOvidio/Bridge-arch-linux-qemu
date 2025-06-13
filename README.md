@@ -2,7 +2,10 @@
 Qemu KVM - Bridge arch linux
 
 
-Switch to directory /etc/systemd/network.
+Switch to directory 
+```
+/etc/systemd/network
+```
 First, create a virtual bridge interface with a netdev unit file.
 We tell systemd to create a device named br0 that functions as an ethernet bridge. 
 I’ll create a file called 99-br0.netdev with the following content:
@@ -57,10 +60,9 @@ Next we should have a few entries in /etc/hosts e.g.:
 
 You want to change the hostname ovidio of course to your hostname and adjust the IP address accordingly
 Next we need to make sure that we have the DNS resolver running once the host is up and running. 
-The same is true for networking and SSH of course:
+The same is true for networking. 
 
 ```
 systemctl enable systemd-resolved.service
 systemctl enable systemd-networkd.service
-systemctl enable sshd.service
 ```
